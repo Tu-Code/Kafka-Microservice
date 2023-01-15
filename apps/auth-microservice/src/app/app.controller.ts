@@ -12,4 +12,9 @@ export class AppController {
   handleUserCreate(@Payload(ValidationPipe) data: CreateUserDto) {
     this.appService.createUser(data);
   }
+
+  @MessagePattern('get_user')
+  handleGetUser(@Payload('userId', ParseIntPipe) userId: number) {
+    return this.appService.getUser(userId);
+  }
 }
